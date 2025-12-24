@@ -17,6 +17,7 @@ export default withNuxt(
       'perfectionist/sort-imports': ['error', {
         tsconfigRootDir: '.',
       }],
+      'node/no-process-env': ['error'],
       'unicorn/filename-case': ['error', {
         cases: {
           kebabCase: true,
