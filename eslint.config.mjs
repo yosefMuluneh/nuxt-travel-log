@@ -13,6 +13,7 @@ export default withNuxt(
       indent: 2,
       semi: true,
     },
+    ignores: ['**/migrations/'],
     rules: {
       'perfectionist/sort-imports': ['error', {
         tsconfigRootDir: '.',
