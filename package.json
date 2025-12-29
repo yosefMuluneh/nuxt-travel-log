@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev:db": "wsl -d Ubuntu bash -c \"export PATH=\\$PATH:\\$HOME/.turso && turso dev --db-file local.db\"",
+    "dev:nuxt": "nuxt dev",
+    "dev": "concurrently \"pnpm dev:nuxt\" \"pnpm dev:db\" --names \"NUXT,TURSO\" --prefix-colors \"green,blue\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -13,8 +15,10 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@libsql/client": "^0.15.15",
     "@nuxt/eslint": "1.12.1",
     "@nuxtjs/color-mode": "4.0.0",
+    "drizzle-orm": "^0.45.1",
     "nuxt": "^4.2.2",
     "vue": "^3.5.25",
     "vue-router": "^4.6.4",
@@ -27,6 +31,7 @@
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/vite": "^4.1.18",
     "daisyui": "^5.5.14",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9.39.2",
     "eslint-plugin-format": "^1.1.0",
     "husky": "^9.1.7",
